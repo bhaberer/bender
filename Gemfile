@@ -1,20 +1,23 @@
 source "http://rubygems.org"
-gem 'nokogiri'
-gem 'ruby-bitly'
 gem 'cinch'
-gem 'time-lord'
-gem 'weather-underground'
-gem 'twitter', '4.6.2'
 gem 'rspec'
 gem 'rspec-given'
-gem 'file-tail'
-gem 'crack', '0.1.7'
-gem 'multi_json'
-gem 'json', '1.7.7'
-gem 'faraday'
-gem 'calc'
-gem 'weary', :git => 'git://github.com/mwunsch/weary.git'
-gem 'tumblr-rb', :git => 'git://github.com/mwunsch/tumblr.git'
 
+# Non-Gemmed Plugins
+gem 'cinch-bag',            :git => 'git@github.com:bhaberer/cinch-bag.git'
+gem 'cinch-pax-timer',      :git => 'git@github.com:bhaberer/cinch-pax-timer.git'
 
-
+# Plugins
+gem 'cinch-wikipedia',        '>= 0.0.1'
+gem 'cinch-twitterstatus',    '>= 0.0.1'
+gem 'cinch-dicebag',          '>= 0.0.2'
+gem 'cinch-seen',             '>= 0.0.2'
+gem 'cinch-hangouts',         '>= 0.0.1'
+gem 'cinch-karma',            '>= 0.0.1'
+gem 'cinch-calculate',        '>= 0.0.1'
+gem 'cinch-convert',          '>= 0.0.1'
+gem 'cinch-urbandict',        '>= 0.0.3'
+gem 'cinch-logsearch',        '>= 0.0.1'
+gem 'cinch-logger-canonical', '>= 0.0.1'
+gem 'cinch-links-tumblr',     '>= 0.0.3'
+gem 'cinch-links-logger',     '>= 0.0.1'
