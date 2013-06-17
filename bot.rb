@@ -31,11 +31,11 @@ conf = YAML::load(File.open('config/bot.yml'))
     c.server       = conf[:server]
     c.channels     = conf[:chans].map { |chan| '#' + chan }
     c.max_messages = 1
-    c.port       = conf['port'] if conf.key?(:port)
+    c.port       = conf[:port] if conf.key?(:port)
 
     # Plugins
     c.plugins.prefix  = '.'
-   c.plugins.plugins = [
+    c.plugins.plugins = [
                           Cinch::Plugins::Bag,
                           Cinch::Plugins::Calculate,
                           Cinch::Plugins::Convert,
@@ -75,8 +75,8 @@ conf = YAML::load(File.open('config/bot.yml'))
   end
 
   on :channel, /\A\.stats\z/ do |m|
-    if conf['stats_url']
-      m.user.send "The stats for the channel are available at: #{conf['stats_url']}"
+    if conf[:stats_url]
+      m.user.send "The stats for the channel are available at: #{conf[:stats_url]}"
     else
       m.user.send "No stats page has been defined for this channel, sorry!"
     end
@@ -84,7 +84,7 @@ conf = YAML::load(File.open('config/bot.yml'))
 
   on :notice, /IDENTIFY/ do |m|
     if m.user.nick == 'NickServ'
-      m.reply "IDENTIFY #{conf['nickserv_pass']}"
+      m.reply "IDENTIFY #{conf[:nickserv_pass]}"
     end
   end
 end
