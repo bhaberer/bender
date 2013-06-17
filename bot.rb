@@ -82,6 +82,11 @@ conf = YAML::load(File.open('config/bot.yml'))
     end
   end
 
+  on :channel, /\A\.help\z/ do |m|
+    m.user.send "Hello, my name is #{conf[:nick]}, and I'm the #{m.channel.name} bot."
+    m.user.send "You can find out more about me and how to file feature requests / bugs by visiting #{conf[:wiki_url]}"
+  end
+
   on :notice, /IDENTIFY/ do |m|
     if m.user.nick == 'NickServ'
       m.reply "IDENTIFY #{conf[:nickserv_pass]}"
