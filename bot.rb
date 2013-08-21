@@ -21,7 +21,7 @@ require 'cinch-urbandict'
 require 'cinch-wikipedia'
 
 # Load the bot config
-conf = YAML::load(File.open('config/bot.yml'))
+conf = Psych::load(File.open('config/bot.yml'))
 
 # Init Bot
 @bot = Cinch::Bot.new do
@@ -35,41 +35,25 @@ conf = YAML::load(File.open('config/bot.yml'))
 
     # Plugins
     c.plugins.prefix  = '.'
-    c.plugins.plugins = [
-                          Cinch::Plugins::Bag,
-                          Cinch::Plugins::Calculate,
-                          Cinch::Plugins::Convert,
-                          Cinch::Plugins::Dicebag,
-                          Cinch::Plugins::Hangouts,
-                          Cinch::Plugins::Karma,
-                          Cinch::Plugins::LinksLogger,
-                          Cinch::Plugins::LinksTumblr,
-                          Cinch::Plugins::LogSearch,
-                          Cinch::Plugins::PaxTimer,
-                          Cinch::Plugins::Seen,
-                          Cinch::Plugins::TwitterStatus,
-                          Cinch::Plugins::UrbanDict,
-                          Cinch::Plugins::Wikipedia
-                        ]
+    c.plugins.plugins = Cinch::Plugins.constants.map { |c| Class.module_eval("Cinch::Plugins::#{c}") }
 
     # Setup the cooldown if one is configured
-    if conf.key?(:cooldowns)
+    if conf.key?(:cooldowns) && defined?(enforce_cooldown)
       c.shared[:cooldown] = { :config => conf[:cooldowns] }
     end
 
-
     # Link logger config
-    if conf.key?(:links)
+    if conf.key?(:links) && defined?(Cinch::Plugins::LinksLogger)
       c.plugins.options[Cinch::Plugins::LinksLogger] = conf[:links]
     end
 
     # Tumblr config
-    if conf.key?(:tumblr)
+    if conf.key?(:tumblr) && defined?(Cinch::Plugins::LinksTumblr)
       c.plugins.options[Cinch::Plugins::LinksTumblr] = conf[:tumblr]
     end
 
     # Twitter config
-    if conf.key?(:twitter)
+    if conf.key?(:twitter) && defined?(Cinch::Plugins::TwitterStatus)
       c.plugins.options[Cinch::Plugins::TwitterStatus] = conf[:twitter]
     end
   end
@@ -95,7 +79,7 @@ conf = YAML::load(File.open('config/bot.yml'))
 end
 
 # Loggers
-if conf.key?(:logging)
+if conf.key?(:logging) && defined? Cinch::Logger::CanonicalLogger
   conf[:logging].each do |channel|
     @bot.loggers << Cinch::Logger::CanonicalLogger.new(channel, @bot)
   end
