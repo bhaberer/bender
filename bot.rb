@@ -38,7 +38,7 @@ conf = Psych::load(File.open('config/bot.yml'))
     c.plugins.plugins = Cinch::Plugins.constants.map { |c| Class.module_eval("Cinch::Plugins::#{c}") }
 
     # Setup the cooldown if one is configured
-    if conf.key?(:cooldowns) && defined?(enforce_cooldown)
+    if conf.key?(:cooldowns)
       c.shared[:cooldown] = { :config => conf[:cooldowns] }
     end
 
