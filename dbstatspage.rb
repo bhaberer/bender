@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+require 'rubygems'
+require 'bundler/setup'
 require 'yaml'
+require 'cinch-bag'
 
 # GROSS AS HELL; but whatever, it's irc shit.
 
@@ -67,7 +71,7 @@ def time_parse(secs)
            :secs => secs.floor }
 end
 
-@db_filename = '/home/bhaberer/src/bender/yaml/dickbag.yaml'
+@db_filename = '/home/bhaberer/src/bender/yaml/dickbag_scores.yaml'
 @db_htmlpage = '/home/bhaberer/src/pisg/estats/dickbag.html'
 @karma_filename = '/home/bhaberer/src/bender/yaml/karma.yml'
 @karma_htmlpage = '/home/bhaberer/src/pisg/estats/karma.html'
@@ -76,8 +80,10 @@ end
 @data = YAML::load(File.open(@db_filename))
 @stats = []
 
-@data[:stats].each_pair do |nick, info|
-  @stats << { :nick => nick, :time => info[:time], :count => info[:count] }
+@data[:stats].each_pair do |user, data|
+  @stats << { :nick  => user,
+              :time  => data.time,
+              :count => data.count }
 end
 
 @stats.sort! {|x,y| y[:count] <=> x[:count] }
