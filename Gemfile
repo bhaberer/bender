@@ -1,7 +1,8 @@
 source "http://rubygems.org"
+ruby '1.9.3'
 
 # Bot Framework
-gem 'cinch',                  '~> 2.0.7'
+gem 'cinch',                  '~> 2.0.10'
 
 # Non-Gemmed Plugins
 gem 'cinch-bag',              :git => 'git@github.com:bhaberer/cinch-bag.git'

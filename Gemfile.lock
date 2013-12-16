@@ -13,7 +13,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.5)
-    cinch (2.0.7)
+    cinch (2.0.10)
     cinch-calculate (1.0.0)
     cinch-convert (1.0.0)
       cinch (~> 2.0.5)
@@ -118,7 +118,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cinch (~> 2.0.7)
+  cinch (~> 2.0.10)
   cinch-bag!
   cinch-calculate (~> 1.0.0)
   cinch-convert (~> 1.0.0)
