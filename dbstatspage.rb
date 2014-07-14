@@ -73,7 +73,7 @@ def time_parse(secs)
            :secs => secs.floor }
 end
 
-@db_filename = '/home/bhaberer/src/bender/yaml/dickbag_scores.yaml'
+@db_filename = '/home/bhaberer/src/bender/yaml/bag_status.yml'
 @db_htmlpage = '/home/bhaberer/src/pisg/estats/dickbag.html'
 @karma_filename = '/home/bhaberer/src/bender/yaml/karma.yml'
 @karma_htmlpage = '/home/bhaberer/src/pisg/estats/karma.html'

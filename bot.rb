@@ -11,12 +11,14 @@ require 'cinch-convert'
 require 'cinch-dicebag'
 require 'cinch-hangouts'
 require 'cinch-karma'
-require 'cinch-logsearch'
-require 'cinch-seen'
-require 'cinch-pax-timer'
 require 'cinch-links-logger'
 require 'cinch-links-tumblr'
+require 'cinch-logsearch'
+require 'cinch-notes'
+require 'cinch-pax-timer'
+require 'cinch-seen'
 require 'cinch-twitterstatus'
+require 'cinch-twitterwatch'
 require 'cinch-urbandict'
 require 'cinch-wikipedia'
 
@@ -57,9 +59,14 @@ conf = Psych.load(File.open('config/bot.yml'))
     if conf.key?(:twitter) && defined?(Cinch::Plugins::TwitterStatus)
       c.plugins.options[Cinch::Plugins::TwitterStatus] = conf[:twitter]
     end
+
+    # Twitter config
+    if conf.key?(:twitter) && defined?(Cinch::Plugins::TwitterWatch)
+      c.plugins.options[Cinch::Plugins::TwitterWatch] = conf[:twitter]
+    end
   end
 
-  on :channel, /\A\.stats\z/ do |m|
+  on :message, /\A\.stats\z/ do |m|
     if conf.key?(:stats_url)
       m.user.send 'The stats for the channel are available at: ' +
                   conf[:stats_url]
@@ -68,8 +75,8 @@ conf = Psych.load(File.open('config/bot.yml'))
     end
   end
 
-  on :channel, /\A\.help\z/ do |m|
-    m.user.send 'Hello, my name is #{conf[:nick]}, and I\'m ' +
+  on :message, /\A\.help\z/ do |m|
+    m.user.send "Hello, my name is #{@bot.nick}, and I\'m " +
                 "the #{m.channel.name} bot."
     if conf.key?(:wiki_url)
       m.user.send 'You can find out more about me and how to file feature' +
@@ -80,6 +87,23 @@ conf = Psych.load(File.open('config/bot.yml'))
   on :notice, /IDENTIFY/ do |m|
     m.reply "IDENTIFY #{conf[:nickserv_pass]}" if m.user.nick == 'NickServ'
   end
+
+  on :message, /\.vent/ do |m|
+    m.user.send 'Vent Info: Host: silicon.typefrag.com Port: 33102 Password: omgwtfbbq'
+  end
+
+  CHANNELS = {
+    '#[e]wildstar' => 'Wildstar MMO Chat',
+    '#EMC' => 'Nothanz\'s Feed the beast server chat',
+   
+  }
+  on :message, /\.channels/ do |m|
+    m.user.send 'The following channels are available outside the main #enforcers channel.'
+    CHANNELS.each_pair do |chan, desc|
+      m.user.send [chan, desc].join(' - ')
+    end
+  end
+
 end
 
 # Loggers
