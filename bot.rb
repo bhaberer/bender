@@ -21,6 +21,7 @@ require 'cinch-twitterstatus'
 require 'cinch-twitterwatch'
 require 'cinch-urbandict'
 require 'cinch-wikipedia'
+require 'cinch-rabbit'
 
 # Load the bot config
 conf = Psych.load(File.open('config/bot.yml'))
@@ -95,7 +96,6 @@ conf = Psych.load(File.open('config/bot.yml'))
   CHANNELS = {
     '#[e]wildstar' => 'Wildstar MMO Chat',
     '#EMC' => 'Nothanz\'s Feed the beast server chat',
-   
   }
   on :message, /\.channels/ do |m|
     m.user.send 'The following channels are available outside the main #enforcers channel.'

@@ -1,10 +1,20 @@
 GIT
   remote: git@github.com:bhaberer/cinch-bag.git
-  revision: 148225850719a2671190d9cc9450b593b1726e06
+  revision: 38a4e6a911e6c04c39c52b597ea82e9c02693f92
   specs:
-    cinch-bag (1.1.0)
+    cinch-bag (1.2.0)
       cinch (~> 2.0.12)
       cinch-cooldown (~> 1.1.1)
+      cinch-storage (~> 1.1.0)
+      cinch-toolbox (~> 1.1)
+      time-lord (~> 1.0.1)
+
+GIT
+  remote: git@github.com:bhaberer/cinch-rabbit.git
+  revision: 02b5ac77bd14929f5c2dfa666c3626e121b62be9
+  specs:
+    cinch-rabbit (0.0.1)
+      cinch (~> 2.0.12)
       cinch-storage (~> 1.1.0)
       cinch-toolbox (~> 1.1.0)
       time-lord (~> 1.0.1)
@@ -15,10 +25,21 @@ GIT
   specs:
     time-lord (1.0.2)
 
+GIT
+  remote: git@github.com:mwunsch/tumblr.git
+  revision: 56120b7eb65e77bd730fec05d2d6861b3641d08a
+  specs:
+    tumblr-rb (2.1.2)
+      launchy (~> 2.1.2)
+      multi_json (~> 1.8.0)
+      sinatra (~> 1.4.0)
+      thor (~> 0.18.0)
+      weary (~> 1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.3.6)
+    addressable (2.3.8)
     buftok (0.2.0)
     cinch (2.0.12)
     cinch-calculate (1.0.5)
@@ -59,7 +80,7 @@ GEM
     cinch-notes (1.0.4)
       cinch (~> 2)
       cinch-storage (~> 1.1)
-    cinch-pax-timer (1.0.9)
+    cinch-pax-timer (1.0.11)
       cinch (~> 2)
       cinch-cooldown (~> 1.1, >= 1.1.1)
       cinch-toolbox (~> 1.1)
@@ -89,42 +110,37 @@ GEM
       cinch (~> 2)
       cinch-cooldown (~> 1.1, >= 1.1.1)
       cinch-toolbox (~> 1.1)
-    equalizer (0.0.9)
-    faraday (0.9.0)
+    equalizer (0.0.11)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    http (0.6.2)
+    http (0.6.4)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
-    json (1.8.1)
+    json (1.8.3)
     launchy (2.1.2)
       addressable (~> 2.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    mini_portile (0.6.0)
-    multi_json (1.10.1)
+    mini_portile (0.6.2)
+    multi_json (1.8.4)
     multipart-post (2.0.0)
     naught (1.0.0)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
-    promise (0.3.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    promise (0.3.1)
     psych (1.3.4)
-    rack (1.5.2)
+    rack (1.6.4)
     rack-protection (1.5.3)
       rack
-    simple_oauth (0.3.0)
-    sinatra (1.4.5)
+    simple_oauth (0.3.1)
+    sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
+      tilt (>= 1.3, < 3)
     thor (0.18.1)
-    thread_safe (0.3.4)
-    tilt (1.4.1)
-    tumblr-rb (2.1.1)
-      launchy (~> 2.1.2)
-      sinatra (~> 1.4.0)
-      thor (~> 0.18.0)
-      weary (~> 1.1.0)
-    twitter (5.12.0)
+    thread_safe (0.3.5)
+    tilt (2.0.1)
+    twitter (5.14.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
       equalizer (~> 0.0.9)
@@ -159,10 +175,12 @@ DEPENDENCIES
   cinch-logger-canonical (~> 0.0.1)
   cinch-logsearch (~> 1.0.1)
   cinch-notes (~> 1.0.1)
-  cinch-pax-timer (~> 1.0.8)
+  cinch-pax-timer (~> 1.0.10)
+  cinch-rabbit!
   cinch-seen (~> 1.0.3)
   cinch-twitterstatus (~> 1.1.0)
   cinch-twitterwatch (~> 1.0.2)
   cinch-urbandict (~> 1.0.3)
   cinch-wikipedia (~> 1.0.3)
   time-lord!
+  tumblr-rb!
