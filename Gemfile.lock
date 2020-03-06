@@ -138,8 +138,8 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     promise (0.3.1)
     psych (2.0.17)
-    rack (1.6.12)
-    rack-protection (1.5.3)
+    rack (1.6.13)
+    rack-protection (1.5.5)
       rack
     simple_oauth (0.3.1)
     sinatra (1.4.7)
